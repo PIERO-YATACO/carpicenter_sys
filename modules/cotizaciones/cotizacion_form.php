@@ -734,16 +734,14 @@ if ($id) {
         if (fechaInput && numInput && !isEditMode) {
             fechaInput.addEventListener('change', function() {
                 if (!this.value) return;
-                const parts = this.value.split('-');
-                if (parts.length === 3) {
-                    const year = parts[0];
-                    const month = parts[1].padStart(3, '0');
-                    const currentVal = numInput.value.trim();
-                    const match = currentVal.match(/^(\d{4})\s+(\d{3})\s+(\d{1,6})$/);
-                    if (match) {
-                        numInput.value = `${year} ${month} ${match[3]}`;
-                    }
-                }
+                fetch(`cotizacion_controller.php?action=get_next_number&fecha=${encodeURIComponent(this.value)}`)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data && data.numero) {
+                            numInput.value = data.numero;
+                        }
+                    })
+                    .catch(err => console.error('Error al calcular correlativo:', err));
             });
         }
     };

@@ -92,14 +92,16 @@ class CotizacionModel {
         $year = date('Y', $timestamp);
         $month = str_pad(date('n', $timestamp), 3, '0', STR_PAD_LEFT);
 
-        // Obtener el correlativo numérico secuencial más alto registrado
+        // Patrón para capturar el correlativo del mismo año y mes
+        // Ej: "2026 009 001", "2026-009-001", etc.
+        $prefixPattern = '/^' . preg_quote($year, '/') . '[\s\-_]*' . preg_quote($month, '/') . '[\s\-_]*(\d{1,6})$/';
+
         $stmt = $this->db->query("SELECT numero FROM cotizaciones");
         $maxCorrelativo = 0;
         if ($stmt) {
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $num = trim($row['numero'] ?? '');
-                // Captura el último grupo de dígitos (ej: "2026 008 016" -> 16, "2026-008-016" -> 16)
-                if (preg_match('/(\d{1,6})$/', $num, $matches)) {
+                if (preg_match($prefixPattern, $num, $matches)) {
                     $val = (int)$matches[1];
                     if ($val > $maxCorrelativo) {
                         $maxCorrelativo = $val;

@@ -135,6 +135,11 @@ switch ($action) {
         } else {
             echo json_encode(['success' => false, 'error' => 'Faltan datos']);
         }
+    case 'get_next_number':
+        header('Content-Type: application/json');
+        $fecha = $_GET['fecha'] ?? null;
+        $nextNum = $model->generateNextNumero($fecha);
+        echo json_encode(['success' => true, 'numero' => $nextNum]);
         exit;
 }
 ?>
