@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 400" width="100%" height="100%">
+  <!-- Red Crest (Copete del Pájaro Carpintero) -->
+  <g fill="#D8232A">
+    <!-- Top feather tuft -->
+    <path d="M 155,32 C 136,44 122,62 126,94 C 135,100 148,104 162,108 C 165,91 169,74 186,58 C 174,48 166,38 155,32 Z"/>
+    <!-- Middle feather tuft -->
+    <path d="M 124,50 C 108,62 98,76 103,96 C 112,100 122,103 133,104 C 135,91 139,78 152,66 Z"/>
+    <!-- Lower feather tuft -->
+    <path d="M 103,72 C 90,82 84,92 88,105 C 96,108 106,110 115,111 C 117,100 121,90 131,80 Z"/>
+  </g>
+
+  <!-- Eye (Ojo) -->
+  <circle cx="196" cy="74" r="6" fill="#1D1D1B"/>
+
+  <!-- Black Body and Beak -->
+  <g fill="#1D1D1B">
+    <!-- Head, Beak, Throat & Chest Stroke -->
+    <path d="M 186,58 C 204,60 216,68 220,72 L 268,80 L 220,94 C 214,106 215,126 208,150 C 193,196 160,242 146,256 C 174,216 214,152 225,120 C 234,94 225,74 204,63 Z"/>
+    
+    <!-- Wing & Back Sweeping Arc -->
+    <path d="M 180,98 C 148,132 112,192 95,262 C 127,215 166,152 188,114 Z"/>
+
+    <!-- Bottom Crescent Base Arc -->
+    <path d="M 148,236 C 168,228 184,234 190,246 C 175,246 160,242 148,236 Z"/>
+  </g>
+</svg>

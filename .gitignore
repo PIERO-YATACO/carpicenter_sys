@@ -1,0 +1,14 @@
+# Entorno y logs
+error_log
+*.log
+scratch/
+response.txt
+
+# Subidas temporales o archivos pesados innecesarios
+uploads/tmp/
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/

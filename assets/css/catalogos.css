@@ -1,0 +1,576 @@
+/* ==========================================================================
+   CARPICENTER - Catálogo Oficial 8 Páginas (Replica Exacta de Documento PDF)
+   ========================================================================== */
+
+:root {
+    --cp-dark: #121212;
+    --cp-red: #d32f2f;
+    --cp-red-bright: #e53935;
+    --cp-green: #16a34a;
+    --cp-card-bg: #f4f3f0;
+    --cp-text-main: #1f2937;
+    --cp-text-muted: #6b7280;
+    --cp-border: #e5e7eb;
+}
+
+body {
+    background: #e5e5e5;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: var(--cp-text-main);
+    margin: 0;
+    padding: 0;
+}
+
+/* ==========================================================================
+   ESTILOS DE LA VISTA WEB (DASHBOARD)
+   ========================================================================== */
+
+.catalog-page-wrapper {
+    background: #f8fafc;
+    min-height: 100vh;
+    padding: 1.5rem;
+}
+
+.catalog-header-banner {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--cp-border);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.catalog-logo-head {
+    max-height: 48px;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+}
+
+.cat-web-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.cat-web-card {
+    background: #ffffff;
+    border: 1px solid var(--cp-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+}
+
+.cat-web-card-media {
+    height: 200px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.cat-web-card-media img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.cat-web-card-body {
+    padding: 1.2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   IMPRESIÓN / REPLICA PDF 8 PÁGINAS (210mm x 297mm A4 PORTRAIT)
+   ========================================================================== */
+
+.pdf-catalog-container {
+    width: 210mm;
+    margin: 1.5rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.pdf-page {
+    width: 210mm;
+    height: 297mm;
+    background: #ffffff;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    page-break-after: always;
+    page-break-inside: avoid;
+}
+
+/* ==========================================================================
+   PÁGINA 1: PORTADA NEGRA CON FRANJA ROJA DIAGONAL
+   ========================================================================== */
+
+.pdf-cover-page-official {
+    background: var(--cp-dark);
+    color: #ffffff;
+    padding: 0;
+    position: relative;
+}
+
+.pdf-cover-diagonal-red {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: var(--cp-red);
+    clip-path: polygon(35% 0, 100% 0, 100% 100%, 75% 100%);
+    z-index: 1;
+}
+
+.pdf-cover-bird-watermark {
+    position: absolute;
+    right: -5%;
+    bottom: 15%;
+    width: 65%;
+    opacity: 0.08;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.pdf-cover-content-official {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+}
+
+.pdf-cover-main-logo {
+    max-height: 85px;
+    width: auto;
+    object-fit: contain;
+}
+
+.pdf-cover-slogan {
+    font-size: 0.95rem;
+    letter-spacing: 4px;
+    color: var(--cp-red-bright);
+    font-weight: 700;
+    margin-top: 1rem;
+    text-transform: uppercase;
+}
+
+.pdf-cover-headline h1 {
+    font-size: 2.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: #ffffff;
+    margin-bottom: 2rem;
+}
+
+.pdf-cover-headline h1 strong {
+    color: var(--cp-red-bright);
+    font-weight: 800;
+}
+
+.pdf-cover-ws-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: transparent;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.pdf-cover-ws-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.pdf-cover-bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+    background: var(--cp-red);
+    z-index: 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   PÁGINA 2: ÍNDICE DE CONTENIDOS
+   ========================================================================== */
+
+.pdf-index-page-official {
+    padding: 3rem 2.5rem 4rem 2.5rem;
+}
+
+.pdf-index-header-tag {
+    font-size: 0.85rem;
+    font-weight: 800;
+    color: var(--cp-red);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.pdf-index-title {
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--cp-dark);
+    margin: 0.2rem 0 0.6rem 0;
+}
+
+.pdf-index-red-line {
+    width: 80px;
+    height: 4px;
+    background: var(--cp-red);
+    margin-bottom: 2.5rem;
+}
+
+.pdf-index-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+
+.pdf-index-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f3f4f6;
+    padding-bottom: 1.5rem;
+}
+
+.pdf-index-row-left {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.pdf-index-circle-icon {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 2px solid var(--cp-red);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cp-red);
+    font-size: 1.5rem;
+}
+
+.pdf-index-num-title h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--cp-dark);
+    margin: 0 0 0.2rem 0;
+}
+
+.pdf-index-num-title h3 span {
+    color: var(--cp-red);
+    margin-right: 0.4rem;
+}
+
+.pdf-index-num-title p {
+    font-size: 0.9rem;
+    color: var(--cp-text-muted);
+    margin: 0;
+}
+
+.pdf-index-page-num {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--cp-dark);
+}
+
+/* ==========================================================================
+   PÁGINAS 3 A 7: SECCIONES DE CATEGORÍA (GRID 2x2 DE 4 PRODUCTOS)
+   ========================================================================== */
+
+.pdf-category-page-official {
+    padding: 2.5rem 2.5rem 4.5rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.pdf-cat-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.pdf-cat-title-num {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--cp-dark);
+    margin: 0;
+}
+
+.pdf-cat-title-num span {
+    color: var(--cp-red);
+    margin-right: 0.5rem;
+}
+
+.pdf-cat-subtitle {
+    font-size: 0.95rem;
+    color: var(--cp-text-muted);
+    margin: 0.4rem 0 0.8rem 0;
+    max-width: 75%;
+}
+
+.pdf-cat-grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.pdf-cat-card-official {
+    background: var(--cp-card-bg);
+    border-radius: 14px;
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+    box-sizing: border-box;
+}
+
+.pdf-cat-card-img-box {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.8rem;
+}
+
+.pdf-cat-card-img-box img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.pdf-cat-card-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--cp-dark);
+    margin-bottom: 0.3rem;
+}
+
+.pdf-cat-card-desc {
+    font-size: 0.82rem;
+    color: var(--cp-text-muted);
+    line-height: 1.4;
+    margin-bottom: 0.6rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.pdf-cat-card-ws-link {
+    color: var(--cp-green);
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    margin-top: auto;
+}
+
+/* Banner Llamado a Acción Inferior */
+.pdf-cat-bottom-banner {
+    background: #f9fafb;
+    border-left: 4px solid var(--cp-red);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.pdf-cat-bottom-text {
+    font-size: 0.88rem;
+    color: var(--cp-dark);
+}
+
+.pdf-cat-bottom-text strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 0.1rem;
+}
+
+.pdf-cat-bottom-ws-pill {
+    background: var(--cp-dark);
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Pie de Página con Óvalo Rojo de Número */
+.pdf-footer-official {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: var(--cp-dark);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+    box-sizing: border-box;
+    font-size: 0.78rem;
+}
+
+.pdf-footer-official img {
+    height: 20px;
+    object-fit: contain;
+}
+
+.pdf-footer-page-oval {
+    background: var(--cp-red);
+    color: #ffffff;
+    font-weight: 800;
+    padding: 0.2rem 0.7rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   PÁGINA 8: CONTRAPORTADA DE CIERRE (BACK COVER)
+   ========================================================================== */
+
+.pdf-back-page-official {
+    background: var(--cp-dark);
+    color: #ffffff;
+    padding: 3.5rem 2.5rem 5rem 2.5rem;
+    position: relative;
+}
+
+.pdf-back-green-btn {
+    background: #25d366;
+    color: #ffffff;
+    padding: 1.2rem 2rem;
+    border-radius: 40px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2rem 0 3rem 0;
+    box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+}
+
+.pdf-back-pillars-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+    margin-bottom: 3rem;
+}
+
+.pdf-back-pillar-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.pdf-back-pillar-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--cp-red-bright);
+    font-size: 1.2rem;
+}
+
+.pdf-back-bottom-bar-official {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: var(--cp-red);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.5rem;
+    box-sizing: border-box;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   REGLAS DE IMPRESIÓN DIRECTA DE PDF EN NAVEGADOR
+   ========================================================================== */
+
+@media print {
+    body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .pdf-toolbar {
+        display: none !important;
+    }
+
+    .pdf-catalog-container {
+        width: 100% !important;
+        margin: 0 !important;
+        gap: 0 !important;
+    }
+
+    .pdf-page {
+        width: 100vw !important;
+        height: 100vh !important;
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+    }
+}
